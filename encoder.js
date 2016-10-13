@@ -1,5 +1,5 @@
 document.getElementById("inputArea").addEventListener("keyup", function(){
-  document.getElementById("textArea").innerHTML += letters[.keycode];
+  document.getElementById("textArea").innerHTML = "<p>" + document.getElementById('inputText').value + "</p>"
 });
 
 //event handler for radio buttons
@@ -7,7 +7,7 @@ $("input[type='radio']").click(function(){
 $("input:checked").prop('checked',false);
 $(this).prop('checked',true);
 
-var letters = {
+ var letters = {
   65:"a",
   66:"b",
   67:"c",
@@ -40,14 +40,13 @@ var letters = {
 });
 
 if($("input:checked").val() == "cipher"){
+textArea.textContent = textArea.textContent[]
+}
 
+else if($("input:checked").val() == "heiroglyphics"){
 
 }
 
-if($("input:checked").val() == "heiroglyphics"){
-
-}
-
-if($("input:checked").val() == "runes"){
+else if($("input:checked").val() == "runes"){
 
 }
