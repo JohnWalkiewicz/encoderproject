@@ -1,6 +1,10 @@
-var textArea = document.getElementById('textArea');
+/*Global Variables*/
 
+var textArea = document.getElementById('textArea');
 var letterObject = {
+
+/*Object for translating cipher, heiroglyphics, runes*/
+32: " ",
  65:"a",
  66:"b",
  67:"c",
@@ -26,45 +30,49 @@ var letterObject = {
  87:"w",
  88:"x",
  89:"y",
- 90:"z",
- 32: " "
+ 90:"z"
+
 
 
 }
 
 
 document.getElementById("inputArea").addEventListener("keyup", function(e){
-  var userKey = e.keyCode;
-if(userKey == 8){
+  var keyDown = e.keyCode;
+
+if(keyDown == 32) {
+    textArea.textContent += letterObject[32];
+  }
+else if(keyDown == 8){
     textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1)
 }
 
 
 else if($("input:checked").val() == "cipher"){
 
-if(userKey + 1 ==91){
+if(keyDown + 1 ==91){
   textArea.textContent +="a"
 }
-else if(userKey == 32) {
+else if(keyDown == 32) {
   textArea.textContent += letterObject[32];
 }
 else{
-  textArea.textContent += letterObject[userKey + 1];
+  textArea.textContent += letterObject[keyDown + 1];
 }
     }
 
   else if($("input:checked").val() == "heiroglyphics"){
-    if(userKey == 32) {
+    if(keyDown == 32) {
       textArea.textContent += letterObject[32];
     }
     else{
-        $("#textArea").append("<img src='images/heiroglyphics/" + letterObject[userKey] + ".gif'>");
+        $("#textArea").append("<img src='images/heiroglyphics/" + letterObject[keyDown] + ".gif'>");
     }
 
   }
 
   else if($("input:checked").val() == "runes"){
-    $("textArea").append("img src='images/heiroglyphics/" + String.fromCharCode(e.keyCode) + ".gif");
+
   }
   else if($("input:checked").val() == "echo"){
   document.getElementById("textArea").innerHTML = "<p>" + document.getElementById('inputText').value + "</p>";
