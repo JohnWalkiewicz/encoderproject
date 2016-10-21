@@ -4,7 +4,7 @@ var textArea = document.getElementById('textArea');
 var letterObject = {
 
 /*Object for translating cipher, heiroglyphics, runes*/
-32: " ",
+ 32: " ",
  65:"a",
  66:"b",
  67:"c",
@@ -31,12 +31,7 @@ var letterObject = {
  88:"x",
  89:"y",
  90:"z"
-
-
-
 }
-
-
 document.getElementById("inputArea").addEventListener("keyup", function(e){
   /*Gets keycode for each key on keyboard*/
   var keyDown = e.keyCode;
@@ -48,7 +43,6 @@ if(keyDown == 32) {
 else if(keyDown == 8){
     textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1)
 }
-
 /*Checks if button with value cipher, is checked*/
 else if($("input:checked").val() == "cipher"){
 
@@ -62,7 +56,6 @@ else{
   textArea.textContent += letterObject[keyDown + 1];
 }
     }
-
   /*Checks if button with value heiroglyphics, is checked*/
   else if($("input:checked").val() == "heiroglyphics"){
     if(keyDown == 32) {
@@ -71,7 +64,6 @@ else{
     else{
         $("#textArea").append("<img src='images/heiroglyphics/" + letterObject[keyDown] + ".gif'>");
     }
-
   }
   /*Checks if button with value runes, is checked*/
   else if($("input:checked").val() == "runes"){
@@ -81,55 +73,33 @@ else{
     else{
         $("#textArea").append("<img src='images/runes/" + letterObject[keyDown] + ".gif'>");
     }
-
-
-
   }
   /*Checks if button with value echo is checked*/
   else if($("input:checked").val() == "echo"){
     /*Just pastes whatever is typed into inputarea into textarea*/
   document.getElementById("textArea").innerHTML = "<p>" + document.getElementById('inputText').value + "</p>";
-
 }
-
-
-
 });
-
 
 document.getElementById("translationInputArea").addEventListener("keyup", function(e){
 var keyInput = e.keyCode;
-if(keyInput == 8){
-   textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1)
+if(keyInput == 32) {
+ translationArea.textContent += letterObject[32];
 }
-else{
-
+else if(keyInput == 8){
+   translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1)
 }
-
-if(keyInput - 1 == 91){
-  translationArea.textContent +="a"
+else if(keyInput + 1 == 91){
+  translationArea.textContent +="z"
 }
-else if(keyInput == 32) {
-  translationArea.textContent += letterObject[32];
-}
- 
-else{
+//else if(keyInput == 18)
+else {
+  console.log("Any other letter");
   translationArea.textContent += letterObject[keyInput - 1];
 }
-
-
-
 });
-
-
-
-
-
-
 //event handler for radio buttons
 $("input[type='radio']").click(function(){
 $("input:checked").prop('checked',false);
 $(this).prop('checked',true);
-
-
 });
