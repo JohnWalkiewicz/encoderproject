@@ -61,7 +61,7 @@ else{
     if(keyDown == 32) {
       textArea.textContent += letterObject[32];
     }
-    else{
+    else {
         $("#textArea").append("<img src='images/heiroglyphics/" + letterObject[keyDown] + ".gif'>");
     }
   }
@@ -89,10 +89,10 @@ if(keyInput == 32) {
 else if(keyInput == 8){
    translationArea.textContent = translationArea.textContent.substr(0, translationArea.textContent.length - 1)
 }
-else if(keyInput + 1 == 91){
+else if(keyInput == 65){
   translationArea.textContent +="z"
 }
-//else if(keyInput == 18)
+
 else {
   console.log("Any other letter");
   translationArea.textContent += letterObject[keyInput - 1];
