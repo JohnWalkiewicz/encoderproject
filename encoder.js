@@ -72,6 +72,14 @@ else{
   }
 
   else if($("input:checked").val() == "runes"){
+    if(keyDown == 32) {
+      textArea.textContent += letterObject[32];
+    }
+    else{
+        $("#textArea").append("<img src='images/runes/" + letterObject[keyDown] + ".gif'>");
+    }
+
+
 
   }
   else if($("input:checked").val() == "echo"){
