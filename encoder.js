@@ -95,18 +95,28 @@ else{
 
 
 });
-document.getElementById("translationInputText").addEventListener("keyup", function(e){
-var keyDown = e.keyCode;
-if(keyDown - 1 ==91){
-  translationArea.textContent +="a"
-}
-else if(keyDown == 32) {
-  translationArea.textContent += letterObject[32];
+
+
+document.getElementById("translationInputArea").addEventListener("keyup", function(e){
+var keyInput = e.keyCode;
+if(keyInput == 8){
+   textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1)
 }
 else{
-  translationArea.textContent += letterObject[keyDown - 1];
+
 }
-    
+
+if(keyInput - 1 == 91){
+  translationArea.textContent +="a"
+}
+else if(keyInput == 32) {
+  translationArea.textContent += letterObject[32];
+}
+ 
+else{
+  translationArea.textContent += letterObject[keyInput - 1];
+}
+
 
 
 });
