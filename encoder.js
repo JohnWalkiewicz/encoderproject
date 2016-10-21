@@ -1,5 +1,5 @@
 /*Global Variables*/
-
+var translationArea = document.getElementById('translationArea');
 var textArea = document.getElementById('textArea');
 var letterObject = {
 
@@ -38,16 +38,18 @@ var letterObject = {
 
 
 document.getElementById("inputArea").addEventListener("keyup", function(e){
+  /*Gets keycode for each key on keyboard*/
   var keyDown = e.keyCode;
-
+/*If space is entered, adds value 32 of obj which is space*/
 if(keyDown == 32) {
     textArea.textContent += letterObject[32];
   }
+  /*Checks if backspace is entered, textContent gets subtracted by one*/
 else if(keyDown == 8){
     textArea.textContent = textArea.textContent.substr(0, textArea.textContent.length - 1)
 }
 
-
+/*Checks if button with value cipher, is checked*/
 else if($("input:checked").val() == "cipher"){
 
 if(keyDown + 1 ==91){
@@ -61,6 +63,7 @@ else{
 }
     }
 
+  /*Checks if button with value heiroglyphics, is checked*/
   else if($("input:checked").val() == "heiroglyphics"){
     if(keyDown == 32) {
       textArea.textContent += letterObject[32];
@@ -70,7 +73,7 @@ else{
     }
 
   }
-
+  /*Checks if button with value runes, is checked*/
   else if($("input:checked").val() == "runes"){
     if(keyDown == 32) {
       textArea.textContent += letterObject[32];
@@ -82,7 +85,9 @@ else{
 
 
   }
+  /*Checks if button with value echo is checked*/
   else if($("input:checked").val() == "echo"){
+    /*Just pastes whatever is typed into inputarea into textarea*/
   document.getElementById("textArea").innerHTML = "<p>" + document.getElementById('inputText').value + "</p>";
 
 }
@@ -90,6 +95,26 @@ else{
 
 
 });
+document.getElementById("translationInputText").addEventListener("keyup", function(e){
+var keyDown = e.keyCode;
+if(keyDown - 1 ==91){
+  translationArea.textContent +="a"
+}
+else if(keyDown == 32) {
+  translationArea.textContent += letterObject[32];
+}
+else{
+  translationArea.textContent += letterObject[keyDown - 1];
+}
+    
+
+
+});
+
+
+
+
+
 
 //event handler for radio buttons
 $("input[type='radio']").click(function(){
